@@ -19,13 +19,13 @@ public class InventoryMovement {
     @Enumerated(EnumType.STRING)
     private MoveType moveType;
 
-    private LocalDate movedDate;
+    private LocalDateTime movedDate;
     private Integer quantity;
     private String itemRefId;
 
     public InventoryMovement(Item item, int quantity){
         this.quantity = quantity;
         this.itemRefId = item.getRefId();
-        this.movedDate = LocalDate.now();
+        this.movedDate = LocalDateTime.now();
     }
 }

@@ -30,9 +30,19 @@ public record ItemController(ItemService itemService) {
         return new ResponseEntity<>(itemService.getByCreated(LocalDate.now()), HttpStatus.OK);
     }
 
-    @GetMapping("/created/lastWeek")
+    @GetMapping("/received/lastWeek")
     public ResponseEntity<List<Item>> getItemsAddedLastWeek(){
         return new ResponseEntity<>(itemService.getReceivedFromVendorLastWeek(), HttpStatus.OK);
+    }
+
+    @GetMapping("/released/today")
+    public ResponseEntity<List<Item>> getReleaseToSupermarketToday(){
+        return new ResponseEntity<>(itemService.getReleasedToSupermarketToday(), HttpStatus.OK);
+    }
+
+    @GetMapping("/returned/lastMonth")
+    public ResponseEntity<List<Item>> returnedToVendorLastMonth(){
+        return new ResponseEntity<>(itemService.returnedToVendorLastMonth(), HttpStatus.OK);
     }
 
     @PutMapping("/{refId}")

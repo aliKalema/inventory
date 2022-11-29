@@ -52,19 +52,19 @@ public class ItemService {
    }
 
    public List<Item> getReleasedToSupermarketToday(){
-      return itemRepository.findByMovedDateAndMoveType(LocalDate.now(), MoveType.RELEASE_TO_STORE);
+      return itemRepository.findByMovedDateAndMoveType(LocalDate.now(), MoveType.RELEASE_TO_STORE.name());
    }
 
    public List<Item> returnedToVendorLastMonth(){
       LocalDate startOfMonth = getPreviousMonth(LocalDate.now()).get("START_OF_MONTH");
       LocalDate endOfMOnth = getPreviousMonth(LocalDate.now()).get("END_OF_MONTH");
-      return itemRepository.findByMovedDateRangeAndMoveType(startOfMonth, endOfMOnth, MoveType.RETURN_TO_VENDOR);
+      return itemRepository.findByMovedDateRangeAndMoveType(startOfMonth, endOfMOnth, MoveType.RETURN_TO_VENDOR.name());
    }
 
    public List<Item> getReceivedFromVendorLastWeek() {
       LocalDate sunday = getPreviousWeek(LocalDate.now()).get("SUNDAY");
       LocalDate saturday =  getPreviousWeek(LocalDate.now()).get("SATURDAY");
-      return itemRepository.findByMovedDateRangeAndMoveType(sunday, saturday, MoveType.RECEIVED_FROM_VENDOR);
+      return itemRepository.findByMovedDateRangeAndMoveType(sunday, saturday, MoveType.RECEIVED_FROM_VENDOR.name());
    }
 
    public Map<String, LocalDate> getPreviousWeek(LocalDate localDate){
